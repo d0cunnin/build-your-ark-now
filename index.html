@@ -221,6 +221,14 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 28px;
+      text-decoration: none;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .hero-badge:hover {
+      background: rgba(233,129,76,0.22);
+      box-shadow: 0 4px 20px rgba(233,129,76,0.2);
+      transform: translateY(-2px);
     }
     .hero-badge::before {
       content: '';
@@ -431,6 +439,19 @@
       width: 100%;
       border-radius: 16px;
       box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .manual-stack-image {
+      position: absolute;
+      bottom: 40px;
+      right: -40px;
+      width: 180px;
+      z-index: 5;
+    }
+    .front-cover {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
     }
     .build-ark-badge {
       position: absolute;
@@ -643,6 +664,75 @@
       box-shadow: 0 30px 60px rgba(0,0,0,0.35);
       border-color: rgba(56,116,145,0.3);
     }
+    .course-card.expanded {
+      transform: scale(1.02);
+      border-color: rgba(233,129,76,0.4);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    .course-card.expanded .course-body p { opacity: 1; }
+    .course-extra {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+      opacity: 0;
+      font-size: 0.83rem;
+      color: rgba(240,236,228,0.65);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 0;
+      padding: 0 28px;
+    }
+    .course-card.expanded .course-extra {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 4px;
+      padding: 14px 28px 20px;
+    }
+    .course-card { cursor: pointer; }
+    .course-expand-hint {
+      font-size: 0.7rem;
+      color: var(--orange);
+      opacity: 0.6;
+      letter-spacing: 0.06em;
+    }
+    .tithe-card { cursor: pointer; }
+    .tithe-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease, opacity 0.4s ease, margin 0.4s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .tithe-card.expanded .tithe-details {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 18px;
+    }
+    .tithe-details ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 14px;
+    }
+    .tithe-details ul li {
+      font-size: 0.83rem;
+      color: rgba(240,236,228,0.72);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tithe-details ul li::before {
+      content: '→';
+      color: var(--orange);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+    .tithe-card.expanded {
+      border-color: rgba(233,129,76,0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .tithe-card.expanded::before { opacity: 1; }
     .course-header {
       padding: 28px 28px 0;
       display: flex;
@@ -1074,7 +1164,12 @@
   <div class="hero-grid-overlay"></div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">Consider the Ant Series</div>
+      <a href="https://youtube.com/playlist?list=PLkBeuKz6Bkex7ziOrXtKUxNVdM3eLdbGM&si=NDz7vPYahBtZi8VC"
+         target="_blank"
+         class="hero-badge">
+         <i class="fa-brands fa-youtube"></i>
+         Consider the Ant Series
+      </a>
       <h1>It's Time to Build Your <em>Ark</em></h1>
       <p class="hero-subtitle">Preparation · Strategy · Obedience · Community</p>
       <blockquote>"Preparedness is not fear.<br>It is wisdom applied early."</blockquote>
@@ -1126,6 +1221,12 @@
       <img src="https://drive.google.com/uc?export=view&id=1byunFfR5YmMBhqpNuQQmu8s-TIBmzEQ7"
            alt="It's Time to Build Your Ark Manual"
            onerror="this.style.display='none'">
+      <div class="manual-stack-image">
+        <img src="https://drive.google.com/uc?export=view&id=1hN326m5m-iclk4VT3pPvDbL_1zf3OjI3"
+             alt="Front Cover"
+             class="front-cover"
+             onerror="this.style.display='none'">
+      </div>
       <div class="build-ark-badge">400 Pages<br>of Instruction</div>
     </div>
     <div class="reveal-right">
@@ -1182,6 +1283,8 @@
       <h2 class="section-title">Beyond the <em>Tithe</em></h2>
       <div class="section-line" style="margin:0 auto 20px;"></div>
       <p>Building sustainable churches, leaders, and communities in uncertain economic times.</p>
+      <p style="margin-top:16px; opacity:0.75; font-size:0.95rem;">Many churches and families are facing increasing economic pressure due to inflation, rising costs, and employment instability. Beyond the Tithe explores sustainable strategies designed to help churches, leaders, and communities build resilience without compromising mission or integrity.</p>
+      <p style="margin-top:14px; font-size:0.82rem; color:var(--orange); opacity:0.8; letter-spacing:0.04em;">↓ Click any card to explore deeper strategies</p>
     </div>
     <div class="tithe-grid">
       <div class="tithe-card reveal">
@@ -1192,6 +1295,16 @@
           <span class="tithe-tag">Stewardship</span>
           <span class="tithe-tag">Ownership</span>
         </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Generational wealth building</li>
+            <li>Land and property acquisition</li>
+            <li>Community investment pools</li>
+            <li>Ethical business practices</li>
+            <li>Tithing beyond 10%</li>
+            <li>Kingdom-aligned partnerships</li>
+          </ul>
+        </div>
       </div>
       <div class="tithe-card reveal">
         <div class="tithe-icon"><i class="fa-solid fa-church"></i></div>
@@ -1200,6 +1313,20 @@
         <div class="tithe-tags">
           <span class="tithe-tag">Business</span>
           <span class="tithe-tag">Community</span>
+        </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Transportation services</li>
+            <li>Commercial kitchens</li>
+            <li>Community event rentals</li>
+            <li>Childcare programs</li>
+            <li>Senior support services</li>
+            <li>Media production studios</li>
+            <li>Workforce development centers</li>
+            <li>Co-working spaces</li>
+            <li>Community agriculture</li>
+            <li>Educational programs</li>
+          </ul>
         </div>
       </div>
       <div class="tithe-card reveal">
@@ -1211,6 +1338,19 @@
           <span class="tithe-tag">Consulting</span>
           <span class="tithe-tag">Media</span>
         </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Publishing & digital products</li>
+            <li>Consulting & coaching</li>
+            <li>Podcast monetization</li>
+            <li>Online courses</li>
+            <li>AI-assisted services</li>
+            <li>Remote work opportunities</li>
+            <li>Grant writing services</li>
+            <li>Speaking engagements</li>
+            <li>Subscription communities</li>
+          </ul>
+        </div>
       </div>
       <div class="tithe-card reveal">
         <div class="tithe-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -1219,6 +1359,16 @@
         <div class="tithe-tags">
           <span class="tithe-tag">Trades</span>
           <span class="tithe-tag">Essential Services</span>
+        </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Plumbing & electrical</li>
+            <li>HVAC & mechanical</li>
+            <li>Healthcare & caregiving</li>
+            <li>Food production & preservation</li>
+            <li>Construction & repair</li>
+            <li>Technology & cybersecurity</li>
+          </ul>
         </div>
       </div>
       <div class="tithe-card reveal">
@@ -1229,6 +1379,16 @@
           <span class="tithe-tag">AI</span>
           <span class="tithe-tag">Future of Work</span>
         </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Jobs AI is displacing</li>
+            <li>Skills AI cannot replace</li>
+            <li>AI tools for ministry & business</li>
+            <li>Automation-resistant careers</li>
+            <li>Building AI-powered services</li>
+            <li>Positioning ahead of the shift</li>
+          </ul>
+        </div>
       </div>
       <div class="tithe-card reveal">
         <div class="tithe-icon"><i class="fa-solid fa-coins"></i></div>
@@ -1237,6 +1397,16 @@
         <div class="tithe-tags">
           <span class="tithe-tag">Resilience</span>
           <span class="tithe-tag">Planning</span>
+        </div>
+        <div class="tithe-details">
+          <ul>
+            <li>3–6 month emergency fund</li>
+            <li>Debt elimination sequencing</li>
+            <li>Precious metals & hard assets</li>
+            <li>Cash reserves & local banking</li>
+            <li>Budget restructuring frameworks</li>
+            <li>Financial resilience assessment</li>
+          </ul>
         </div>
       </div>
       <div class="tithe-card reveal">
@@ -1247,6 +1417,16 @@
           <span class="tithe-tag">Co-ops</span>
           <span class="tithe-tag">Collective</span>
         </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Group purchasing cooperatives</li>
+            <li>Food co-ops & buying clubs</li>
+            <li>Shared tool & equipment pools</li>
+            <li>Community investment groups</li>
+            <li>Skill-sharing networks</li>
+            <li>Mutual aid structures</li>
+          </ul>
+        </div>
       </div>
       <div class="tithe-card reveal">
         <div class="tithe-icon"><i class="fa-solid fa-house-chimney-crack"></i></div>
@@ -1255,6 +1435,16 @@
         <div class="tithe-tags">
           <span class="tithe-tag">Property</span>
           <span class="tithe-tag">Legacy</span>
+        </div>
+        <div class="tithe-details">
+          <ul>
+            <li>Land acquisition strategies</li>
+            <li>Rental & income properties</li>
+            <li>Community land trusts</li>
+            <li>Church property utilization</li>
+            <li>Generational transfer planning</li>
+            <li>Stewardship vs. ownership mindset</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1323,6 +1513,7 @@
       <h2 class="section-title">Ark <em>Academy</em></h2>
       <div class="section-line" style="margin:0 auto 20px;"></div>
       <p>The education and implementation hub — where knowledge becomes action and preparation becomes a lifestyle.</p>
+      <p style="margin-top:12px; font-size:0.82rem; color:var(--orange); opacity:0.8; letter-spacing:0.04em;">↓ Click any module card to expand details</p>
     </div>
     <div class="academy-grid">
       <div class="course-card reveal">
@@ -1334,7 +1525,10 @@
           <h3>Emergency Systems Planning</h3>
           <p>Build layered systems for food, water, power, communication, and shelter that function when normal systems fail.</p>
         </div>
-        <div class="course-footer"><span>Preparedness Fundamentals</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Includes planning frameworks, supply checklists, power backup strategies, water storage protocols, and implementation timelines. Practical exercises guide you from awareness to action.
+        </div>
+        <div class="course-footer"><span>Preparedness Fundamentals</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
       <div class="course-card reveal">
         <div class="course-header">
@@ -1345,7 +1539,10 @@
           <h3>Community Building Strategy</h3>
           <p>How to identify, invite, and organize an aligned community around shared values, resources, and preparedness goals.</p>
         </div>
-        <div class="course-footer"><span>Community Systems</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Covers vetting and inviting aligned members, establishing shared agreements, organizing roles and skill inventories, creating communication trees, and building a resilient local network.
+        </div>
+        <div class="course-footer"><span>Community Systems</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
       <div class="course-card reveal">
         <div class="course-header">
@@ -1356,7 +1553,10 @@
           <h3>Family Preparedness Framework</h3>
           <p>A comprehensive family-centered system covering roles, supplies, communication plans, and long-term positioning.</p>
         </div>
-        <div class="course-footer"><span>Family Readiness</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Includes household role assignments, go-bag configurations, bug-in vs. bug-out decision trees, children's preparedness, and multi-generational planning models.
+        </div>
+        <div class="course-footer"><span>Family Readiness</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
       <div class="course-card reveal">
         <div class="course-header">
@@ -1367,7 +1567,10 @@
           <h3>Leadership Readiness</h3>
           <p>Prepare to lead others through uncertainty. Develop the mindset, communication skills, and decisiveness of a prepared leader.</p>
         </div>
-        <div class="course-footer"><span>Leadership Track</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Leadership in disruption is different than in stability. This module covers crisis communication, calm decision-making, trust-building under pressure, and how to anchor a community when systems fail.
+        </div>
+        <div class="course-footer"><span>Leadership Track</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
       <div class="course-card reveal">
         <div class="course-header">
@@ -1378,7 +1581,10 @@
           <h3>Strategic Thinking for Uncertain Times</h3>
           <p>Mental frameworks, scenario planning, and discernment tools that help you make wise decisions under pressure.</p>
         </div>
-        <div class="course-footer"><span>Strategic Intelligence</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Scenario modeling, second-order thinking, risk mapping, and discernment frameworks. Helps you think clearly and act wisely when others are reacting out of fear or confusion.
+        </div>
+        <div class="course-footer"><span>Strategic Intelligence</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
       <div class="course-card reveal">
         <div class="course-header">
@@ -1389,7 +1595,10 @@
           <h3>Sustainable Systems & Self-Sufficiency</h3>
           <p>Food production, water management, alternative energy, and the practical skills that create lasting independence.</p>
         </div>
-        <div class="course-footer"><span>Sustainability</span><i class="fa-solid fa-arrow-right" style="color:var(--orange); font-size:0.85rem;"></i></div>
+        <div class="course-extra">
+          Container gardens, seed saving, rainwater collection, composting, solar basics, food preservation techniques, and building sustainable rhythms that last beyond a single season of preparedness.
+        </div>
+        <div class="course-footer"><span>Sustainability</span><span class="course-expand-hint">Click to expand ↓</span></div>
       </div>
     </div>
   </div>
@@ -1663,6 +1872,23 @@
       this.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
       this.style.background = '';
     }, 3000);
+  });
+  // TITHE CARD ACCORDION
+  document.querySelectorAll('.tithe-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.contains('expanded');
+      document.querySelectorAll('.tithe-card').forEach(c => c.classList.remove('expanded'));
+      if (!isOpen) card.classList.add('expanded');
+    });
+  });
+
+  // COURSE CARD ACCORDION
+  document.querySelectorAll('.course-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.contains('expanded');
+      document.querySelectorAll('.course-card').forEach(c => c.classList.remove('expanded'));
+      if (!isOpen) card.classList.add('expanded');
+    });
   });
 </script>
 </body>
